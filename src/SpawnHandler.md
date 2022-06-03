@@ -99,6 +99,12 @@ Of course whatever is done for the defending side was duplicated for the attacki
 [Attribute("", UIWidgets.EditBox)]
 private int m_GeneralSpawnRadius;
 
+[Attribute("3", UIWidgets.EditBox, desc: "Number of groups that spawn per interval")]
+private int m_MinimumSpawnPerInterval;
+
+[Attribute("10", UIWidgets.EditBox, desc: "Number of groups that spawn per interval")]
+private int m_MaxiumSpawnPerInterval;
+
 [Attribute("", UIWidgets.ResourcePickerThumbnail, desc: "Pick Waypoint prefab for attackers")]
 private ResourceName m_AttackWaypointPrefab;
 
@@ -126,13 +132,9 @@ Additionally, we need the actual entities associated with our spawn locations. S
 private ref array<IEntity> defendingSpawnLocations = {};
 private ref array<IEntity> attackingSpawnLocations = {};
 ```
-
-Also, to get a random point in an area we can use the `RandomGenerator` which unfortunately can't give a random number? Perhaps something else has it but for now I've been using an array of numbers to use when figuring out how many groups to spawn at a time.
-
 Lastly, we'll want a reference to our world...
 
 ```csharp
-private ref array<int> spawnCounts = { 1, 2, 3, 4, 5, 6, 7 };
 private ref RandomGenerator random;
 private BaseWorld world;
 ```
@@ -194,7 +196,7 @@ void SpawnLoop()
     // Spawn only if we haven't capped out
     if(m_CurrentDefendingEntityCount < m_DefendingSideCount)
     {
-        int count = spawnCounts.GetRandomElement();
+        int count = Math.RandomInt(m_MinimumSpawnPerInterval, m_MaxiumSpawnPerInterval);
         for(int i = 0; i < count; i++)
         {
             ResourceName prefab = m_DefendingFactionGroupPrefabs.GetRandomElement();
@@ -205,7 +207,7 @@ void SpawnLoop()
 
     if(m_CurrentAttackingEntityCount < m_AttackingSideCount)
     {
-        int count = spawnCounts.GetRandomElement();
+        int count = Math.RandomInt(m_MinimumSpawnPerInterval, m_MaxiumSpawnPerInterval);
         for(int i = 0; i < count; i++)
         {
             ResourceName prefab = m_AttackingFactionGroupPrefabs.GetRandomElement();
