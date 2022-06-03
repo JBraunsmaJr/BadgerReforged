@@ -8,6 +8,7 @@ title = "Badger 2-3 Reforged"
 [output.html]
 default-theme = "dark"
 preferred-dark-theme = "navy"
+site-url = "/mdbook/"
 
 [build]
 build-dir = "public"
