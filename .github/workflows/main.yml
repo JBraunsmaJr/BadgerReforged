@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -28,7 +28,7 @@ jobs:
         # Delete the ref to avoid keeping history.
         git update-ref -d refs/heads/gh-pages
         rm -rf *
-        mv ../book/* .
+        mv ../public/* .
         git add .
         git commit -m "Deploy $GITHUB_SHA to gh-pages"
         git push --force
