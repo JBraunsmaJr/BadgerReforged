@@ -189,6 +189,33 @@ void LoadLocations()
 }
 ```
 
+### Random Count For
+```csharp
+int RandomCountFor(bool attackingTeam = true)
+{
+    int minimum = 1;
+    int maximum = 1;
+    int difference = 0;
+    
+    if(attackingTeam)
+    {
+        difference = m_AttackingSideCount - m_CurrentAttackingEntityCount;
+        
+        maximum = Math.Ceil(difference/m_AttackingFactionGroupPrefabs.Count());
+    }
+    else
+    {
+        difference = m_DefendingSideCount - m_CurrentDefendingEntityCount;
+        maximum = Math.Ceil(difference/m_DefendingFactionGroupPrefabs.Count());
+    }
+    
+    // Difference will mean we are over the limit thus shouldn't spawn anything more
+    if(difference < 0) return 0;
+    
+    return Math.RandomInt(minimum, Math.Max(1, maximum));
+}
+```
+
 ### Spawn Loop
 ```csharp
 void SpawnLoop()
@@ -303,25 +330,31 @@ void SetWaypointFor(SCR_AIGroup group, bool isAttacking=true)
 ```csharp
 void CountSides()
 {
-    ref private array<AIAgent> entities = {};
+    ref private array<AIAgent> m_entities = {};		
     AIWorld aiWorld = GetGame().GetAIWorld();
-    aiWorld.GetAIAgents(entities);
-
+    aiWorld.GetAIAgents(m_entities);
+    
     m_CurrentDefendingEntityCount = 0;
     m_CurrentAttackingEntityCount = 0;
-
-    foreach(AIAgent agent : entities)
+    
+    Print(string.Format("Filtering units from pool of %1", m_entities.GetRefCount()), LogLevel.WARNING);
+    
+    foreach(AIAgent agent : m_entities)
     {
-        // Appears the AI component is this so if we can successfully cast / find this on our agent we're good!
-        SCR_ChimeraAIAgent chimera = SCR_ChimeraAIAgent.Cast(agent.FindComponent(SCR_ChimeraAIAgent));
-
+        SCR_AIGroup chimera = SCR_AIGroup.Cast(agent);
+        
         if(!chimera)
+        {
+            Print(string.Format("Was not a SCR_AIGroup but a %1", agent.ClassName()), LogLevel.WARNING);
             continue;
-
-        if(chimera.GetFaction(agent).GetFactionKey() == m_AttackingFactionKey)
+        }
+        
+        if(chimera.GetFaction().GetFactionKey() == m_AttackingFactionKey)
             m_CurrentAttackingEntityCount += 1;
-        else if(chimera.GetFaction(agent).GetFactionKey() == m_DefendingFactionKey)
+        else if(chimera.GetFaction().GetFactionKey() == m_AttackingFactionKey)
             m_CurrentDefendingEntityCount += 1;
     }
+    
+    Print(string.Format("Defending: %1 Attacking: %2", m_CurrentDefendingEntityCount, m_CurrentAttackingEntityCount), LogLevel.WARNING);				
 }
 ```
