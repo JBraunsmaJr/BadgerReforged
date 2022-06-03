@@ -8,3 +8,10 @@ title = "Badger 2-3 Reforged"
 [output.html]
 default-theme = "dark"
 preferred-dark-theme = "navy"
+
+[build]
+build-dir = "public"
+
+[preprocessor.toc]
+command = "./mdbook-toc"
+renderer = ["html"]
