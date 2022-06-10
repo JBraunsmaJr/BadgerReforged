@@ -23,4 +23,4 @@ Sites near a spawn point are selected
 Both friendly and enemy forces will spawn randomly around provided spawn locations.
 
 ## Source Code
-[Source Code](./SpawnHandlerCode.md)
+[Source Code](SpawnHandlerCode.md)
