@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js dark">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Game Mode - Badger 2-3 Reforged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "dark";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('dark')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../attackdefend/gamemode.html" class="active"><strong aria-hidden="true">1.</strong> Game Mode</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../attackdefend/faction_config.html"><strong aria-hidden="true">1.1.</strong> Faction Config</a></li><li class="chapter-item expanded "><a href="../attackdefend/spawnarea.html"><strong aria-hidden="true">1.2.</strong> Spawn Area</a></li><li class="chapter-item expanded "><a href="../attackdefend/poi.html"><strong aria-hidden="true">1.3.</strong> POI</a></li><li class="chapter-item expanded "><a href="../attackdefend/attackdefend.html"><strong aria-hidden="true">1.4.</strong> Attack &amp; Defend</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Badger 2-3 Reforged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="base-gamemode"><a class="header" href="#base-gamemode">Base Gamemode</a></h1>
+<p>For my purposes I just want to create a gamemode class that can store <code>SpawnAreas</code> as well as <code>Points of Interest</code> along with appropriate APIs to register/unregister amongst a few other things.</p>
+<pre><code class="language-csharp">[EntityEditorProps(category: &quot;GameScripted/Gamemode&quot;, description: &quot;Badger's basic game-mode.&quot;, color: &quot;0 0 255 255&quot;)]
+class SCR_Badger_BaseGameModeClass : SCR_BaseGameModeComponentClass
+{
+};
+
+class SCR_Badger_BaseGameMode : SCR_BaseGameModeComponent
+{
+    // Actual code will go here
+};
+</code></pre>
+<p>This is all we need to make this class appear in the Enfusion Editor as a component we can add to <code>SCR_BaseGameMode</code>.</p>
+<ol>
+<li>
+<p>Place a <code>SCR_BaseGameMode</code> into the world.
+<img src="../imgs/attackdefend/create-entity-step1.png" alt="Create Entity" /></p>
+</li>
+<li>
+<p>Click on the <code>SCR_BaseGameMode</code> entity and <code>AddComponent</code></p>
+</li>
+<li>
+<p>Select <code>SCR_Badger_BaseGameMode</code>, or whatever you called yours... if you're following along...</p>
+</li>
+</ol>
+<p>Now you should have it appear in the entity hierarchy
+<img src="../imgs/attackdefend/entity-hierarchy.png" alt="Entity Hierarchy" /></p>
+<h2 id="singleton"><a class="header" href="#singleton">Singleton</a></h2>
+<p>This will behave as a centralized place for any other subsystem. For my uses I'd like to store Faction <code>SpawnAreas</code> along with <code>Points of Interest</code>. Both of these are entities which will automatically register themselves which will require an API. So lets get cracking....</p>
+<p>External entities will need a way to access our gamemode API. There should only ever be <strong>one</strong> instance. Thus, a singleton approach is perfect.</p>
+<pre><code class="language-csharp">// Singleton, assigned on first 'get'
+static SCR_Badger_BaseGameMode s_pInstance;
+
+// Retrieves existing instance of gamemode, if it exists...
+SCR_Badger_BaseGameMode GetInstance()
+{
+    BaseGameMode gameMode = GetGame().GetGameMode();
+    if(!gameMode) return null;
+
+    if(!s_pInstance)
+        s_pInstance = SCR_Badger_BaseGameMode.Cast(gameMode.FindComponent(SCR_Badger_BaseGameMode));
+
+    return s_pInstance;
+}
+</code></pre>
+<h2 id="spawn-areas"><a class="header" href="#spawn-areas">Spawn Areas</a></h2>
+<p>We need the ability to both register and unregister a spawn area.</p>
+<pre><code class="language-csharp">private ref map&lt;Faction, ref array&lt;SCR_Badger_SpawnArea&gt;&gt; m_FactionSpawnAreas = new map&lt;Faction, ref array&lt;SCR_Badger_SpawnArea&gt;&gt;();
+
+void RegisterSpawnArea(SCR_Badger_SpawnArea spawnArea)
+{
+    if(!GetGame().GetFactionManager())
+    {
+        Print(&quot;Could not locate faction manager. Unable to register spawn area&quot;, LogLevel.ERROR);
+        return;
+    }
+
+    Faction areaFaction = GetGame().GetFactionManager().GetFactionByKey(spawnArea.GetAffiliatedFactionKey());
+
+    if(!areaFaction) return;
+
+    if(!m_FactionSpawnAreas.Contains(areaFaction))
+        m_FactionSpawnAreas.Insert(areaFaction, new array&lt;SCR_Badger_SpawnArea&gt;());
+    
+    m_FactionSpawnAreas.Get(areaFaction).Insert(spawnArea);
+    Print(string.Format(&quot;%1 has %2 spawn areas now...&quot;, areaFaction.GetFactionName(), m_FactionSpawnAreas.Get(areaFaction).Count()), LogLevel.DEBUG);
+}
+
+void UnregisterSpawnArea(SCR_Badger_SpawnArea spawnArea)
+{
+    if(!GetGame().GetFactionManager())
+    {
+        Print(&quot;Could not locate faction manager. Unable to unregister spawn area&quot;, LogLevel.ERROR);
+        return;    
+    }
+
+    Faction areaFaction = GetGame().GetFactionManager().GetFactionByKey(spawnArea.GetAffiliatedFactionKey());
+
+    if(!areaFaction) return;
+    if(!m_FactionSpawnAreas.Contains(areaFaction)) return;
+
+    int indexOf = m_FactionSpawnAreas.Get(areaFaction).Find(spawnArea);
+
+    if(indexOf != -1)
+        m_FactionSpawnAreas.Get(areaFaction).Remove(indexOf);
+}
+</code></pre>
+<p>Now that we have the ability to add/remove spawn areas we also need a way to access them!</p>
+<pre><code class="language-csharp">// Gets the number of spawn areas that are being tracked for a given faction
+int GetSpawnAreaCountFor(FactionKey factionKey)
+{
+    if(!factionKey) return 0;
+    Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+
+    if(!faction) return 0;
+    if(!m_FactionSpawnAreas.Contains(faction)) return 0;
+
+    return m_FactionSpawnAreas.Get(faction).Count();
+}
+
+// Populate a given array with the spawn areas of a given faction (if applicable), and return the # of spawn areas
+int GetSpawnAreasFor(notnull array&lt;SCR_Badger_SpawnArea&gt; outAreas, FactionKey factionKey)
+{
+    if(!factionKey)
+    {
+        Print(&quot;[SCR_Badger_BaseGameMode] &lt;GetSpawnAreasFor&gt;: FactionKey cannot be null. Returning 0&quot;, LogLevel.ERROR);
+        return 0;
+    }
+
+    Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+
+    if(!faction)
+    {
+        Print(string.Format(&quot;[SCR_Badger_BaseGameMode] &lt;GetSpawnAreasFor&gt;: Could not locate faction with key %1&quot;, factionKey), LogLevel.ERROR);
+        return 0;
+    }
+
+    int count = 0;
+    foreach(SCR_Badger_SpawnArea spawnArea : m_FactionSpawnAreas.Get(faction))
+    {
+        outAreas.Insert(spawnArea);
+        count++;
+    }
+
+    return count;
+}
+
+// Return a random spawn area from a given faction
+SCR_Badger_SpawnArea GetRandomSpawnAreaFor(FactionKey factionKey)
+{
+    if(!factionKey)
+    {
+        Print(&quot;[SCR_Badger_BaseGameMode] &lt;GetRandomSpawnAreaFor&gt;: Faction key is null. Returning nothing&quot;);
+        return null;
+    }
+
+    Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+
+    if(!faction)
+    {
+        Print(string.Format(&quot;[SCR_Badger_BaseGameMode] &lt;GetRandomSpawnAreaFor&gt;: Could not locate faction with key %1&quot;, factionKey), LogLevel.ERROR);
+        return null;
+    }
+
+    if(!m_FactionSpawnAreas.Contains(faction)) return null; // if we're not tracking that faction...
+
+    return m_FactionSpawnAreas.Get(faction).GetRandomElement();
+}
+</code></pre>
+<h2 id="point-of-interest"><a class="header" href="#point-of-interest">Point of interest</a></h2>
+<p>Just like our spawn areas we need the same type of API to register, unregister, retrieve and such....</p>
+<pre><code class="language-csharp">private ref array&lt;SCR_Badger_POI&gt; m_PointsOfInterest = {};
+
+// Retrieve # of POIs being tracked
+int PointsOfInterestCount() { return m_PointsOfInterest.Count(); }
+
+// Loads points of interest into `outArray` and returns # of POIs
+int GetPointsOfInterest(notnull array&lt;SCR_Badger_POI&gt; outArray)
+{
+    int count = 0;
+
+    foreach(SCR_Badger_POI area : m_PointsOfInterest)
+    {
+        outArray.Insert(area);
+        count++;
+    }
+
+    return count;
+}
+
+// Return a random POI.
+SCR_Badger_POI GetRandomPointOfInterest()
+{
+    if(m_PointsOfInterest.IsEmpty()) return null;
+    return m_PointsOfInterest.GetRandomElement();
+}
+
+// Retrieve the areas held by a given faction, in `areas`. Return # of POIs held.
+int GetPointsOfInterestHeldBy(notnull array&lt;SCR_Badger_POI&gt; areas, FactionKey factionKey)
+{
+    int count = 0;
+
+    foreach(SCR_Badger_POI area : m_PointsOfInterest)
+    {
+        if(area.GetOwningFaction().GetFactionKey() != factionKey)
+            continue;
+        
+        areas.Insert(area);
+        count++;
+    }
+
+    return count;
+}
+
+// Registers a POI to the game mode
+void RegsterPOI(SCR_Badger_POI area)
+{
+    if(!area) return;
+    m_PointsOfInterest.Insert(area);
+}
+
+// Unregisters / removes POI from game mode
+void UnregisterPOI(SCR_Badger_POI area)
+{
+    if(!area) return;
+    int indexOf = m_PointsOfInterest.Find(area);
+
+    if(indexOf != -1)
+        m_PointsOfInterest.Remove(indexOf);
+}
+</code></pre>
+<h2 id="in-closing"><a class="header" href="#in-closing">In closing</a></h2>
+<p>That's pretty much all the functionality we need in our basic gamemode system.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="next" href="../attackdefend/faction_config.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="next" href="../attackdefend/faction_config.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
